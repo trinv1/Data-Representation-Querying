@@ -15,8 +15,8 @@ function App() {
         <Routes>
           {/*Each route displays different component when clicked*/}
           <Route path="/home" element={<Content />} />
-          <Route path="/read" element={<h1>Read Component</h1>} />
-          <Route path="/create" element={<h1>Create Component</h1>} />
+          <Route path="/read" element={<Footer />} /> {/*diplays footer component when url changes to read */}
+          <Route path="/create" element={<Header />} />{/*diplays header component when url changes to read */}
         </Routes>
         <Footer />
       </Router>
