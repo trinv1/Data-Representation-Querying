@@ -6,6 +6,9 @@ import Header from './Components/Header';
 import Content from './Components/Content';
 import Footer from './Components/Footer';
 import NavigationBar from './Components/NavBar';
+import Read from './Components/Read';
+import Movies from './Components/Movies';
+
 {/*Importing components*/}
 
 function App() {
@@ -15,8 +18,10 @@ function App() {
         <Routes>
           {/*Each route displays different component when clicked*/}
           <Route path="/home" element={<Content />} />
-          <Route path="/read" element={<Footer />} /> {/*diplays footer component when url changes to read */}
-          <Route path="/create" element={<Header />} />{/*diplays header component when url changes to read */}
+          <Route path="/Footer" element={<Footer />} /> {/*diplays footer component when url changes to read */}
+          <Route path="/Read" element={<Read />} />{/*diplays header component when url changes to read */}
+          <Route path="/Movies" element={<Movies />} />{/*diplays movies component when url changes to read */}
+
         </Routes>
         <Footer />
       </Router>
