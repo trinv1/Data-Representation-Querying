@@ -1,10 +1,13 @@
-const Movies = (props) => { {/*Movies component*/}
+import MovieItem from "./MovieItem";{/*Importing movie item*/}
 
-    return (
-      <div>
-       My movies component
-       {console.log(props.myMovies)} {/* Logging the movies passed in props for debugging purposes */}
-      </div>
+const Movies = (props) => { {/*Movies component*/}
+    
+{/*Mapping through the array of movies from props.myMovies*/}
+{/*and rendering a MovieItem component for each movie*/}
+return props.myMovies.map( 
+        (movie)=>{
+            return <MovieItem myMovie={movie} />
+        }
     );
 };
   

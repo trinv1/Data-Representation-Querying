@@ -30,7 +30,6 @@ const data =
 
   return (
     <div>
-     My movies component
      <Movies myMovies={data}/> {/* Rendering the Movies component and passing 'data' as the 'myMovies' prop */}
     </div>
   );
