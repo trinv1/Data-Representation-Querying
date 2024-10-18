@@ -3,11 +3,13 @@ import { useEffect } from "react";
 
 const MovieItem = (props) => { {/*MovieItem component*/}
 
-{/* logging props to console whenever component mounts of updates */}
+{/* logging props to console whenever component mounts or updates */}
+{/*"[props.myMovies]" only runs effect when array changes*/}
 useEffect( 
+
     ()=>{
         console.log("Movies:", props.myMovies);
-    },[]
+    },[props.myMovies]    
 )
 
 return(

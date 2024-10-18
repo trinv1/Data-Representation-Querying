@@ -16,7 +16,7 @@ function App() {
       <Router>
         <NavigationBar />
         <Routes>
-          {/*Each route displays different component when clicked*/}
+          {/*Each route displays different component when clicked*/}npm 
           <Route path="/home" element={<Content />} />
           <Route path="/Footer" element={<Footer />} /> {/*diplays footer component when url changes to read */}
           <Route path="/Read" element={<Read />} />{/*diplays header component when url changes to read */}
