@@ -9,3 +9,8 @@ app.get('/', (req, res) => {//route for GET requests to the root URL ('/')
 app.listen(port, () => {//starting server and listening on specified port
     console.log(`Server is running on http://localhost:${port}`);//logging servers url to console
 });
+
+app.use((err, req, res, next) => {
+    console.error(err.stack);
+    res.status(500).send('Something went wrong!');
+});
