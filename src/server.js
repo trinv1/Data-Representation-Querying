@@ -39,6 +39,14 @@ app.get('/hello/:name/:surname', (req, res) => {//defining a route for GET reque
     res.send(`Hello ${name} ${surname}`);//sending a response with "Hello" followed by the provided name
 });
 
+const path = require('path');//importing Node's 'path' module to work with file and directory paths
+
+app.get('/index', (req, res) => { //defining a route for GET requests to '/index'
+    res.sendFile(path.join(__dirname, 'index.html'));//sending the 'index.html' file as a response
+});
+
+app.use(express.static('public'));
+
 app.use((err, req, res, next) => {//error handling
     console.error(err.stack);
     res.status(500).send('Something went wrong!');
