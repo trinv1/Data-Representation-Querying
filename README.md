@@ -1,3 +1,6 @@
+Lab5
+Express.js is a minimal and flexible Node.js web application framework that provides essential features for building web and mobile applications. It supports quick API development with built-in HTTP utilities and middleware, enhancing performance without obscuring Node.js features.
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
