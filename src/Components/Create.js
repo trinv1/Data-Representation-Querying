@@ -1,4 +1,4 @@
-//Create.js is a form that allows a user to input a movie title and submit it
+//Create.js is a form that allows a user to input movie info and submit it
 
 import { useState } from "react";
 
