@@ -53,7 +53,21 @@ app.get('/name', (req, res) => {
     res.send(`Hello ${firstname} ${lastname}`);
 });
 
+const bodyParser = require('body-parser');//importing the body-parser module
+app.use(bodyParser.urlencoded({ extended: true }));//configuring body-parser to parse URL-encoded data
+
+app.post('/name', (req, res) => {
+    console.log(req.body); // Log form data to the console
+    const firstname = req.body.firstname;
+    const lastname = req.body.lastname;
+    res.send(`Hello ${firstname} ${lastname}`);
+});
+
+
 app.use((err, req, res, next) => {//error handling
     console.error(err.stack);
     res.status(500).send('Something went wrong!');
 });
+
+//body parser - It takes data sent by the client (e.g., from forms or JSON payloads) and converts it into a JavaScript object.
+//This data can then be easily accessed in server code using req.body.
