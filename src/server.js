@@ -47,6 +47,12 @@ app.get('/index', (req, res) => { //defining a route for GET requests to '/index
 
 app.use(express.static('public'));
 
+app.get('/name', (req, res) => {
+    const firstname = req.query.firstname;
+    const lastname = req.query.lastname;
+    res.send(`Hello ${firstname} ${lastname}`);
+});
+
 app.use((err, req, res, next) => {//error handling
     console.error(err.stack);
     res.status(500).send('Something went wrong!');
