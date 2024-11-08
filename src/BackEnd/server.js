@@ -2,10 +2,6 @@ const express = require('express'); //importing express module
 const app = express();//creating an express app instance
 const port = 4000;//port where server will listen
 
-app.get('/', (req, res) =>{
-   res.send('Hello World');
-});
-
 app.get('/api/movies', (req, res) => {//route for GET requests to the root URL ('/')
     const movies = [
     {
@@ -36,4 +32,19 @@ app.get('/api/movies', (req, res) => {//route for GET requests to the root URL (
 
 app.listen(port, () =>{
     console.log(`Server is running on http://localhost:${port}`);
+});
+
+//Importing cors middleware
+//Allows api to accept requests from any domain
+const cors = require('cors');//importing cors middleware
+app.use(cors());
+
+//Manually defines allowed methods (GET, POST, etc.)
+//and headers (Content-Type, Accept, etc.) for incoming requests.
+//Lets front end communicate with backend
+app.use(function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  next();
 });
