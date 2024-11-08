@@ -1,5 +1,6 @@
 //Create.js is a form that allows a user to input movie info and submit it
 
+import axios from "axios";
 import { useState } from "react";
 
 //sending data to api
@@ -9,14 +10,22 @@ function Create() { //create function       //state variable is allowed to be de
     const [year, setYear] = useState('');//state variable to manage input fields
     const [poster, setPoster] = useState('');
 
-    const handleSubmit = (e) => {
+    //collects form input, creates a movie object, and sends it to the backend API.
+    const handleSubmit = (e) => { 
       e.preventDefault();
-    // Prevent the default form submission behavior (which would refresh the page) when the form is submitted.
-
-      console.log(title);
-      console.log(year);
-      console.log(poster);//Logging all to console
-    }
+      
+      console.log(`Title: ${title}, Year: ${year}, Poster: ${poster}`);
+      
+      const movie = {
+        title: title,
+        year: year,
+        poster: poster
+      };
+      
+      axios.post('http://localhost:4000/api/movies', movie)
+        .then((res) => console.log(res.data))
+        .catch((err) => console.log(err.data));
+    };
   
     return (
       <div>
