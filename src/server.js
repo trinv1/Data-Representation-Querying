@@ -1,3 +1,4 @@
+/*LAB 5 EXPRESS.JS
 const express = require('express'); //importing express module
 const app = express();//creating an express app instance
 const port = 3000;//port where server will listen
@@ -71,3 +72,4 @@ app.use((err, req, res, next) => {//error handling
 
 //body parser - It takes data sent by the client (e.g., from forms or JSON payloads) and converts it into a JavaScript object.
 //This data can then be easily accessed in server code using req.body.
+*/

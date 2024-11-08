@@ -9,7 +9,7 @@ const Read = () => { {/*Read component*/}
  
   useEffect(
     ()=>{//using axios to talk on web for me
-      axios.get('https:jsonblob.com/api/jsonblob/1287718524221775872')//sending http request and run in background not causing app to freeze (asynchronous)
+      axios.get('https:jsonblob.com/api/http://localhost:4000/api/movies/1287718524221775872')//sending http request and run in background not causing app to freeze (asynchronous)
       .then((response)=>{//got response back from http request
         console.log(response.data);//logging to console
         setMovies(response.data.movies)//pulling back in objects from json movies
