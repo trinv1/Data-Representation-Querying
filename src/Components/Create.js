@@ -20,7 +20,7 @@ function Create() { //create function       //state variable is allowed to be de
         title: title,
         year: year,
         poster: poster
-      };
+      }; /////
       
       axios.post('http://localhost:4000/api/movies', movie)
         .then((res) => console.log(res.data))
