@@ -33,7 +33,7 @@ const MovieSchema = new mongoose.Schema({//what do we want db to store
 });
 
 //Generating model based on schema
-const movieModel = new mongoose.model('myMovies', movieSchema); 
+const movieModel = new mongoose.model('myMovies', MovieSchema); 
 
 app.get('/api/movies', (req, res) => {//route for GET requests to the root URL ('/')
     const movies = [
@@ -62,10 +62,14 @@ app.get('/api/movies', (req, res) => {//route for GET requests to the root URL (
     res.status(201).json({ myMovies: movies });//returning JSON with status 201 and rename array to 'myMovies'
 });
 
-app.post('/api/movies', (req, res)=>{
+app.post('/api/movies', async (req, res)=>{
+  const {title, year, poster } = req.body; //pulling these 3 out of request thats being passed up
     console.log("Movies: " + req.body.title);
-    res.send("Movies recieved");
-})
+
+    const newMovie = new movieModel({title, year, poster});
+    await newMovie.save(); //wont send response back until weve saved work to db (weve actually executed lines above)
+    res.status(201).json({ message: 'Movie created successfully', movie: newMovie });
+  })
 
 app.listen(port, () =>{
     console.log(`Server is running on http://localhost:${port}`);
