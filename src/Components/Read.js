@@ -1,5 +1,6 @@
 //read.js
 import { useEffect, useState } from "react";
+import { Card } from "react-bootstrap";
 import axios from "axios";
 import Movies from "./Movies"; {/*importing movies*/}
 const Read = () => { {/*Read component*/}

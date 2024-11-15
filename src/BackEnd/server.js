@@ -35,9 +35,32 @@ const MovieSchema = new mongoose.Schema({//what do we want db to store
 //Generating model based on schema
 const movieModel = new mongoose.model('myMovies', MovieSchema); 
 
-app.get('/api/movies', (req, res) => {//route for GET requests to the root URL ('/')
-    const movies = [
-    {
+app.get('/api/movies', async (req, res) => {//route for GET requests to the root URL ('/')
+    
+    //Movie.find({}) is called. The empty object {} as an argument means it 
+    //fetches all documents in the movies collection.
+    const movies = await movieModel.find({});
+    
+    res.status(200).json({ myMovies: movies });//returning JSON with status 201 and rename array to 'myMovies'
+});
+
+app.post('/api/movies', async (req, res)=>{//adding data to db
+  const {title, year, poster } = req.body; //pulling these 3 out of post request thats being passed up
+    console.log("Movies: " + req.body.title);
+
+    const newMovie = new movieModel({title, year, poster});
+    
+    //saving new movies to mongo db
+    await newMovie.save(); //wont send response back until weve saved work to db (weve actually executed lines above)
+    res.status(201).json({ message: 'Movie created successfully', movie: newMovie });
+  })
+
+app.listen(port, () =>{
+    console.log(`Server is running on http://localhost:${port}`);
+});
+
+
+/*{
       "Title": "Avengers: Infinity War (server)",
       "Year": "2018",
       "imdbID": "tt4154756",
@@ -57,21 +80,5 @@ app.get('/api/movies', (req, res) => {//route for GET requests to the root URL (
       "imdbID": "tt0816711",
       "Type": "movie",
       "Poster": "https://m.media-amazon.com/images/M/MV5BNDQ4YzFmNzktMmM5ZC00MDZjLTk1OTktNDE2ODE4YjM2MjJjXkEyXkFqcGdeQXVyNTA4NzY1MzY@._V1_SX300.jpg"
-    }
-];
-    res.status(201).json({ myMovies: movies });//returning JSON with status 201 and rename array to 'myMovies'
-});
-
-app.post('/api/movies', async (req, res)=>{
-  const {title, year, poster } = req.body; //pulling these 3 out of request thats being passed up
-    console.log("Movies: " + req.body.title);
-
-    const newMovie = new movieModel({title, year, poster});
-    await newMovie.save(); //wont send response back until weve saved work to db (weve actually executed lines above)
-    res.status(201).json({ message: 'Movie created successfully', movie: newMovie });
-  })
-
-app.listen(port, () =>{
-    console.log(`Server is running on http://localhost:${port}`);
-});
+    }*/ 
 

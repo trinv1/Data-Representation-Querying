@@ -14,9 +14,15 @@ useEffect(
 
 return(
     <div>
-        <h3>{props.myMovie.Title}</h3>{/*Displaying the movie title passed in as prop*/}
-        <h3>{props.myMovie.Year}</h3>
-        <img src = {props.myMovie.Poster}></img>
+        <Card>
+            <Card.Header>{props.myMovie.title}</Card.Header>
+            <Card.Body>
+                <blockquote className="blockquote mb-0">
+                    <img src = {props.myMovie.poster} alt ={props.myMovie.title} />
+                    <footer>{props.myMovie.year}</footer>
+                </blockquote>
+            </Card.Body>
+        </Card>
     </div>
 );
 
