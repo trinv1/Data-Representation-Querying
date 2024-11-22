@@ -9,6 +9,7 @@ import NavigationBar from './Components/NavBar';
 import Read from './Components/Read';
 import Movies from './Components/Movies';
 import Create from './Components/Create';
+import Edit from './Components/Edit';
 
 {/*Importing components*/}
 
@@ -23,6 +24,7 @@ function App() {
           <Route path="/Footer" element={<Footer />} /> {/*diplays footer component when url changes to read */}
           <Route path="/Read" element={<Read />} />{/*diplays header component when url changes to read */}
           <Route path="/Movies" element={<Movies />} />{/*diplays movies component when url changes to read */}
+          <Route path="/edit/:id" element={<Edit />} />{/*diplays edit component when url changes to /edit/ */}
         </Routes>
         <Footer />
       </Router>

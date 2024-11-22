@@ -44,11 +44,12 @@ app.get('/api/movies', async (req, res) => {//route for GET requests to the root
     res.status(200).json({ myMovies: movies });//returning JSON with status 201 and rename array to 'myMovies'
 });
 
-//Searching for a particular movie by its id in browser, port 4000
-app.get('/api/movie/:id', async (req, res) => {
-  const movie = await movieModel.findById(req.params.id);
-  res.json(movie);
-});
+
+
+app.put('/api/movie/:id',async (req, res) => {
+  let movie = await movieModel.findByIdAndUpdate(req.params.id,  req.body, {new:true });
+  res.send(movie);
+  })
 
 app.post('/api/movies', async (req, res)=>{//adding data to db
   const {title, year, poster } = req.body; //pulling these 3 out of post request thats being passed up
