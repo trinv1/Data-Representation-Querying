@@ -12,8 +12,8 @@ const MovieItem = (props) => { {/*MovieItem component*/}
 useEffect( 
 
     ()=>{
-        console.log("Movies:", props.myMovies);
-    },[props.myMovies]    
+        console.log("Movies:", props.myMovie);
+    },[props.myMovie]    
 )
 
 
