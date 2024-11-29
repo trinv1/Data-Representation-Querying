@@ -16,11 +16,10 @@ useEffect(
     },[props.myMovies]    
 )
 
-//Function to delete selected movie 
-function MovieItem(props) {
+
     const handleDelete = (e) => {
         e.preventDefault();
-        axios.delete('http://localhost:4000/api/movie/' + props.myMovies._id)
+        axios.delete('http://localhost:4000/api/movie/' + props.myMovie._id)
             .then(() => {
                 props.Reload(); // Refresh the movie list after deletion
             })
@@ -28,6 +27,7 @@ function MovieItem(props) {
                 console.error("Error deleting movie:", error);
             });
     };
+
 
 
 return(
@@ -47,6 +47,6 @@ return(
 );
 };
 
-};
+
 
 export default MovieItem;
