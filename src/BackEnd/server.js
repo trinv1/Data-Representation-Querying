@@ -68,6 +68,8 @@ app.post('/api/movies', async (req, res)=>{//adding data to db
     res.status(201).json({ message: 'Movie created successfully', movie: newMovie });
   })
 
+.
+
 app.listen(port, () =>{
     console.log(`Server is running on http://localhost:${port}`);
 });

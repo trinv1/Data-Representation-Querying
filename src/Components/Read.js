@@ -1,13 +1,12 @@
 //read.js
 import { useEffect, useState } from "react";
-import { Card } from "react-bootstrap";
 import axios from "axios";
 import Movies from "./Movies"; {/*importing movies*/}
 const Read = () => { {/*Read component*/}
 
 //use state used to store data returned from API and manage state of application
-
   const[movies, setMovies] = useState([]);
+  
  
   useEffect(
     ()=>{//using axios to talk on web for me

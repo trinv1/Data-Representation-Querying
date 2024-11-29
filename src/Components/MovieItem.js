@@ -2,6 +2,9 @@
 import { useEffect } from "react";
 import { Card } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import Button from 'react-bootstrap/Button';
+import axios from "axios";
+
 const MovieItem = (props) => { {/*MovieItem component*/}
 
 {/* logging props to console whenever component mounts or updates */}
@@ -12,6 +15,9 @@ useEffect(
         console.log("Movies:", props.myMovies);
     },[props.myMovies]    
 )
+
+
+
 
 return(
     <div>
@@ -27,7 +33,8 @@ return(
         </Card>
     </div>
 );
-
 };
+
+
 
 export default MovieItem;
