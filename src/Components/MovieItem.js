@@ -16,7 +16,18 @@ useEffect(
     },[props.myMovies]    
 )
 
-
+//Function to delete selected movie 
+function MovieItem(props) {
+    const handleDelete = (e) => {
+        e.preventDefault();
+        axios.delete('http://localhost:4000/api/movie/' + props.myMovies._id)
+            .then(() => {
+                props.Reload(); // Refresh the movie list after deletion
+            })
+            .catch((error) => {
+                console.error("Error deleting movie:", error);
+            });
+    };
 
 
 return(
@@ -30,11 +41,12 @@ return(
                 </blockquote>
             </Card.Body>
             <Link to={"/edit/" + props.myMovie._id} className="btn btn-primary">Edit</Link>
+            <Button variant="danger" onClick={handleDelete}>Delete</Button>{/*Delete movie button*/}
         </Card>
     </div>
 );
 };
 
-
+};
 
 export default MovieItem;
